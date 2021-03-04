@@ -1,0 +1,13 @@
+version: '3'
+services: 
+  web:
+    build:
+      # context is to specify where the codes to be pulled from, which is the files in current directory
+      # if the react src codes are in a subfolder named reactsrc then put context: reactsrc
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes: 
+      - /usr/src/app/node_modules
+      - .:/usr/src/app/
