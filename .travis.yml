@@ -8,6 +8,17 @@ before_install:
 script:
   - docker run stevenyong/react-docker npm run test a -- --coverage --watchAll=false
 
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-1"
+  app: "react-docker"
+  environment: "react-docker"
+  bucket_name: ""
+  bucket_path: "react-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY    
 
 # In the upcoming lecture, we will be adding a script to our .travis.yml file. 
 # Due to a change in how the Jest library works with Create React App, 
